@@ -2,37 +2,28 @@
 
 # HNSW Nearest Neighbor Search
 
-This project implements a Hierarchical Navigable Small World (HNSW) algorithm for efficient nearest neighbor search in high-dimensional spaces.
+This project implements a Hierarchical Navigable Small World (HNSW) algorithm for efficient nearest neighbor search in high-dimensional spaces. The algorithm are from the paper "Efficient and Robust Approximate Nearest Neighbor Search using Hierarchical Navigable Small World Graphs" by Yu. A. Malkov and D. A. Yashunin.
 
 ## Project Structure
 
 ```
-hnsw-project
+hnsw-demo
+├── main
+│   └── main.go             # Entry point for the demo application
+├── pkg 
+│   ├── config              # Configuration handling
+│   ├── distance            # Distance metric implementations  
+│   ├── heap                # Priority queue implementation
+│   ├── node                # Node data structure
+│   └── storage             # Persistence layer
 ├── src
-│   ├── core
-│   │   ├── hnsw.go         # Main HNSW implementation
-│   │   ├── node.go         # Node structure definition
-│   │   ├── heap.go         # Priority queue implementation
-│   │   └── distance.go     # Distance calculation functions
-│   ├── search
-│   │   ├── knn_search.go   # K-nearest neighbor search
-│   │   └── layer_search.go  # Layer-wise search implementation
-│   ├── neighbor
-│   │   ├── select_simple.go    # Simple neighbor selection
-│   │   └── select_heuristic.go  # Heuristic neighbor selection
-│   └── utils
-│       ├── config.go       # Configuration handling
-│       ├── stats.go        # Statistics collection
-│       └── persistence.go   # Save/Load functionality
+│   └── algorithm           # HNSW algorithm implementation
 ├── tests
-│   ├── core_test.go        # Tests for core functionalities
-│   ├── search_test.go      # Tests for search functionalities
-│   └── neighbor_test.go    # Tests for neighbor selection functionalities
-├── examples
-│   └── main.go             # Example usage of the HNSW implementation
-├── go.mod                  # Go module file
-├── go.sum                  # Go module dependencies
-└── README.md               # Project documentation
+│   ├── core_test.go        # Core algorithm tests
+│   ├── neighbor_test.go    # Neighbor search tests
+│   └── search_test.go      # Search tests
+├── README.md               # Project README
+└── go.mod                  # Go module definition
 ```
 
 ## Features
@@ -47,7 +38,7 @@ hnsw-project
 1. Clone the repository:
    ```
    git clone <repository-url>
-   cd hnsw-project
+   cd hnsw-demo
    ```
 
 2. Install dependencies:
@@ -57,7 +48,7 @@ hnsw-project
 
 3. Run examples:
    ```
-   go run examples/main.go
+   go run main/main.go
    ```
 
 ## Testing
