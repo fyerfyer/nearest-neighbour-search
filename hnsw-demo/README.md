@@ -1,5 +1,3 @@
-# hnsw-project README.md
-
 # HNSW Nearest Neighbor Search
 
 This project implements a Hierarchical Navigable Small World (HNSW) algorithm for efficient nearest neighbor search in high-dimensional spaces. The algorithm are from the paper "Efficient and Robust Approximate Nearest Neighbor Search using Hierarchical Navigable Small World Graphs" by Yu. A. Malkov and D. A. Yashunin.
