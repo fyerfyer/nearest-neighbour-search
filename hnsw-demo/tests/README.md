@@ -89,8 +89,3 @@ func TestBasicSearch(t *testing.T) {
     }
 }
 ```
-
-## Performance Testing 
-```go
-go test -bench=. ./tests
-```
