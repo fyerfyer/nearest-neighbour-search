@@ -56,12 +56,6 @@ To run the tests, use:
 go test ./tests
 ```
 
-## Performance Testing 
-
-```go
-go test -bench=. ./tests
-```
-
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.

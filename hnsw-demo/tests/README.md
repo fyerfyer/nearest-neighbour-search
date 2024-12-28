@@ -52,6 +52,12 @@ go test -v ./tests
 go test -cover ./tests
 ```
 
+## Performance Testing 
+
+```go
+go test -bench=. ./tests
+```
+
 ## Test Data
 
 The test suite uses synthetic data points in 2D and 3D space for validation:
