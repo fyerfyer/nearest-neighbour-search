@@ -7,6 +7,15 @@ func (h *HNSW) KNNSearch(q []float64, K int, ef int) []int {
 		return []int{}
 	}
 
+	// Dimension check
+    if len(h.nodes) == 0 {
+        return []int{}
+    }
+    
+    if len(q) != h.dimension {
+        return []int{}
+    }
+
 	// Get entry point
 	h.mutex.RLock()
 	ep := h.entryPoint

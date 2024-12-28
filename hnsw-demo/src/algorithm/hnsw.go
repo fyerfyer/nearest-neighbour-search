@@ -21,6 +21,7 @@ type HNSW struct {
 	distFunc   distance.DistanceFunction
 	mutex      sync.RWMutex
 	nodesMutex sync.RWMutex
+	dimension  int
 	// deletedCount int
 }
 
@@ -59,6 +60,15 @@ func (h *HNSW) Insert(id int, vector []float64) error {
 		h.nodesMutex.Unlock()
 		return fmt.Errorf("node %d already exists", id)
 	}
+
+	// Dimension check
+    if len(h.nodes) == 0 {
+        // set dimension for the first node
+        h.dimension = len(vector)
+    } else if len(vector) != h.dimension {
+        h.nodesMutex.Unlock()
+        return fmt.Errorf("vector dimension mismatch: expected %d, got %d", h.dimension, len(vector))
+    }
 
 	// Create new node
 	level := h.generateLevel()
@@ -165,6 +175,11 @@ func (h *HNSW) Search(q []float64, k int) ([]int, []float64) {
 	if len(h.nodes) == 0 {
 		return nil, nil
 	}
+
+	// Dimension check
+	if len(q) != h.dimension {
+        return nil, nil
+    }
 
 	h.mutex.RLock()
 	ep := h.entryPoint
